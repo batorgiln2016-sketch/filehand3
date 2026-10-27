@@ -7,24 +7,37 @@ def read_line(filename, line_number):
 
 # Exercise 2
 def reverse_lines(source, destination):
-     f_src = open(source, "r")
-    lines = f_src.readlines()
-    f_src.close()
-    
-    f_dst = open(destination, "w")
+     fsrc = open(source, "r")
+    lines = fsrc.readlines()
+    fsrc.close()
+    fdst = open(destination, "w")
     count = 0
     for line in reversed(lines):
         clean_line = line.strip()
-        f_dst.write(clean_line + "\n")
+        fdst.write(clean_line + "\n")
         count += 1
-    f_dst.close()
-    
+    fdst.close()
     return count
 
 # Exercise 3
 def merge_files(first, second, destination):
-    # Write your code here
-    pass
+    f1 = open(first, "r")
+    lines1 = f1.readlines()
+    f1.close()
+    f2 = open(second, "r")
+    lines2 = f2.readlines()
+    f2.close()
+    dest = open(destination, "w")
+    count = 0
+    for line in lines1:
+        dest.write(line.strip() + "\n")
+        count += 1
+    for line in lines2:
+        dest.write(line.strip() + "\n")
+        count += 1
+    dest.close()
+    
+    return count
 
 # Exercise 4
 def find_score(filename, name):
