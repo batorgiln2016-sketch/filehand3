@@ -51,10 +51,35 @@ def merge_files(first, second, destination):
 
 # Exercise 4
 def find_score(filename, name):
-    # Write your code here
-    pass
-
+    f = open(filename, "r")
+    score = -1
+    for line in f:
+        parts = line.strip().split(",")
+        if len(parts) == 2 and parts[0] == name:
+            score = int(parts[1])
+            break
+    f.close()
+    return score
 # Exercise 5
 def update_score(filename, name, new_score):
-    # Write your code here
-    pass
+    f = open(filename, "r")
+    lines = f.readlines()
+    f.close()
+    found = False
+    new_lines = []
+    for line in lines:
+        parts = line.strip().split(",")
+        if len(parts) == 2 and parts[0] == name:
+            new_lines.append(f"{name},{new_score}\n")
+            found = True
+        else:
+            if not line.endswith("\n"):
+                new_lines.append(line + "\n")
+            else:
+                new_lines.append(line)
+    if found == True:
+        f = open(filename, "w")
+        for line in new_lines:
+            f.write(line)
+        f.close()
+    return found
