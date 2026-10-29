@@ -46,7 +46,6 @@ def merge_files(first, second, destination):
         dest.write(line.strip() + "\n")
         count += 1
     dest.close()
-    
     return count
 
 # Exercise 4
