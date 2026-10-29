@@ -1,6 +1,5 @@
 # You can remove 'pass' if you written code in the function
 # Exercise 1
-
 def read_line(filename, line_number):
     if line_number <= 0:
         return ""
